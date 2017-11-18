@@ -38,9 +38,9 @@ public class PlayerController {
         return "Update Player Fault";
     }
 
-    @PostMapping("{playerId}/buyhero/{heroId}")
-    public String buyHero(@PathVariable String playerId,@RequestBody Hero hero, @PathVariable String heroId) {
-        boolean buyHero = playerService.buyHero(playerId, hero, heroId);
+    @PostMapping("{playerId}/buyhero")
+    public String buyHero(@PathVariable String playerId,@RequestBody Hero hero) {
+        boolean buyHero = playerService.buyHero(playerId, hero);
         if (buyHero == true){
             Player player = playerService.getPlayerById(playerId);
             return "My Poket Money: "+ player.getPocketMoney();

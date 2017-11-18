@@ -52,16 +52,17 @@ public class PlayerService {
     }
 
 
-    public boolean buyHero(String playerId, Hero hero,String heroId) {
+    public boolean buyHero(String playerId, Hero hero) {
         Player findPlayer = getPlayerById(playerId);
         if (findPlayer == null) {
             return false;
         }
-        Hero findHero = heroRepository.findOne(heroId);
+        Hero findHero = heroRepository.findOne(hero.getHeroId());
         if (findHero == null) {
             return false;
         }
-        int playerPoketMoney = findPlayer.getPocketMoney()-findHero.getPrice();
+        int playerPoketMoney = findPlayer.getPocketMoney()-
+                findHero.getPrice();
         findPlayer.setPocketMoney(playerPoketMoney);
 
         Hero myHero = new Hero();
@@ -82,22 +83,6 @@ public class PlayerService {
         if (findPlayer == null) {
             return false;
         }
-
-//        for (Hero hero : myHero) {
-//            if (hero.getHeroId().equals(heroId)) {
-//                Hero findHero = hero;
-//                if (findHero == null) {
-//                    return false;
-//                }
-//                int playerPoketMoney = findPlayer.getPocketMoney()+ findHero.getPrice();
-//                findPlayer.setPocketMoney(playerPoketMoney);
-//
-//                findPlayer.getMyHero().remove(findHero);
-//                playerRepository.save(findPlayer);
-//
-//                return true;
-//            }
-//        }
 
         Hero findHero =  findPlayer.getMyHero().stream().filter(item -> item.getHeroId().equals(heroId)).findFirst().get();
 
