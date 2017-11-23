@@ -89,7 +89,7 @@ public class PlayerService {
         int playerPoketMoney = findPlayer.getPocketMoney()+ findHero.getPrice();
         findPlayer.setPocketMoney(playerPoketMoney);
 
-        findPlayer.getMyHero().remove(heroId);
+        findPlayer.getMyHero().remove(findHero);
         playerRepository.save(findPlayer);
 
         return true;

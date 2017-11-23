@@ -4,7 +4,7 @@ import edu.se444.tradehero.model.Hero;
 import edu.se444.tradehero.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/shop")
 public class ShopController {
